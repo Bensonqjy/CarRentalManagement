@@ -1,4 +1,6 @@
 using System.Linq;
+using CarRentalManagement.Server.IRepository;
+using CarRentalManagement.Server.Repository;
 using CarRentalManagement1.Server.Data;
 using CarRentalManagement1.Server.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -40,6 +42,8 @@ namespace CarRentalManagement1.Server
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
